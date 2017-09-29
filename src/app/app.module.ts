@@ -5,23 +5,36 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { IonicStorageModule } from '@ionic/storage';
+import { DataProvider } from '../providers/data/data';
+import { SimpleAlertProvider } from '../providers/simple-alert/simple-alert';
+
+// import {LocalNotifications} from '@ionic-native/local-notifications';
+import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   providers: [
+    DataProvider,
+    SimpleAlertProvider,
+    //LocalNotifications,
+    Camera,
+    File,
+    SocialSharing,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
